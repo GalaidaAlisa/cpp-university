@@ -2,32 +2,48 @@
 
 using namespace std;
 
-void f(const char* name = "Ivanov", int year = 1, double grade = 4.0) {
-    cout << "Name: " << name << ", year: " << year << ", grade: " << grade << endl;
-} // +++ ++- +-- ---
-void f(int year, double grade = 4.0) {
-    const char* name = "Ivanov";
-    cout << "Name: " << name << ", year: " << year << ", grade: " << grade << endl;
-} // -++ -+-
-
-void f(const char* name, double grade) {
-    int year = 1;
-    cout << "Name: " << name << ", year: " << year << ", grade: " << grade << endl;
-} // +-+
-void f(double grade) {
-    const char* name = "Ivanov";
-    int year = 1;
-    cout << "Name: " << name << ", year: " << year << ", grade: " << grade << endl;
-} // --+
-
 struct Student {
     const char* name;
     int year;
     double grade;
 };
 
-int main() {
-    Student array[8] = {
+Student f(const char* name = "Ivanov", int year = 1, double grade = 4.0) {
+    Student student;
+    student.name = name;
+    student.year = year;
+    student.grade = grade;
+    return student;
+} // +++ ++- +-- ---
+Student f(int year, double grade = 4.0) {
+    Student student;
+    const char* name = "Ivanov";
+    student.name = name;
+    student.year = year;
+    student.grade = grade;
+    return student;
+} // -++ -+-
+Student f(const char* name, double grade) {
+    Student student;
+    int year = 1;
+    student.name = name;
+    student.year = year;
+    student.grade = grade;
+    return student;
+} // +-+
+Student f(double grade) {
+    Student student;
+    const char* name = "Ivanov";
+    int year = 1;
+    student.name = name;
+    student.year = year;
+    student.grade = grade;
+    return student;
+} // --+
+
+
+int main() { 
+    Student array[8] = {             // створюємо масив структур
         {"Smith", 2, 3.3}, // +++
         {"Johnson", 2, NULL}, // ++-
         {"Petrov", NULL, NULL}, // +--
@@ -37,24 +53,28 @@ int main() {
         {"Kim", NULL, 4.1}, // +-+
         {nullptr, NULL, 4.3} // --+
     };
+
     for (int i = 0; i < 8; i++) {
         if (array[i].name && array[i].year && array[i].grade) {
-            f(array[i].name, array[i].year, array[i].grade);
+            array[i] = f(array[i].name, array[i].year, array[i].grade);
         } else if (array[i].name && array[i].year) {
-            f(array[i].name, array[i].year);
+            array[i] = f(array[i].name, array[i].year);
         } else if (array[i].name && array[i].grade) {
-            f(array[i].name, array[i].grade);
+            array[i] = f(array[i].name, array[i].grade);
         } else if (array[i].name) {
-            f(array[i].name);
+            array[i] = f(array[i].name);
         } else if (array[i].year && array[i].grade) {
-            f(array[i].year, array[i].grade);
+            array[i] = f(array[i].year, array[i].grade);
         } else if (array[i].year) {
-            f(array[i].year);
+            array[i] = f(array[i].year);
         } else if (array[i].grade) {
-            f(array[i].grade);
+            array[i] = f(array[i].grade);
         } else {
-            f();
+            array[i] = f();
         }
+    }    
+    for (int i = 0; i < 8; i++) {
+        cout << "Name: " << array[i].name << ", year: " << array[i].year << ", grade: " << array[i].grade << "." << endl;
     }
     return 0;
 }
