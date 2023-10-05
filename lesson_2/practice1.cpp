@@ -8,6 +8,12 @@ struct Student {
     double grade;
 };
 
+Student f(const char* name = "Ivanov", int year = 1, double grade = 4.0); // +++ ++- +-- ---
+Student f(int year, double grade = 4.0); // -++ -+-
+Student f(const char* name, double grade); // +-+
+Student f(double grade); // --+
+
+
 Student f(const char* name = "Ivanov", int year = 1, double grade = 4.0) {
     Student student;
     student.name = name;
