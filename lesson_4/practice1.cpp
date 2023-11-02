@@ -55,7 +55,7 @@ int main () {
     cout << "Diagonal: " << rectangular.diagonal() << endl << endl;
 
     cout << "Test for pointer:" << endl;
-    Rectangular* pointer_on_r = &rectangular;
+    Rectangular* pointer_on_r = new Rectangular(3, 10);
     pointer_on_r->output();
     cout << "Perimetr: " << pointer_on_r->perimetr() << endl;
     cout << "Area: " << pointer_on_r->area() << endl;
