@@ -5,7 +5,7 @@ using namespace std;
 
 class Rectangular {
     public:
-        Rectangular(int w, int l): width(w), length(l) {}
+        Rectangular(int w = 0, int l = 0): width(w), length(l) {}
     void output() {
         cout << "Rectangular with width " << this->width << " and lenght " << this->length << "." << endl;
     }
