@@ -50,11 +50,23 @@ public:
         }
     }
 
-    bool test() {
-        if (mark > 2) {
-            return true;
+    float scholarship() {
+        if ((mark > 3) && (mark <= 4)) {
+            return 2000;
+        } else if (mark > 4) {
+            return 2500;
+        } else {
+            return 0;
         }
-        return false;
+    } 
+
+    void output_scholarship() {
+        int amount = this->scholarship();
+        if (amount != 0) {
+            cout << this->get_name() << " receives " << amount << " hryvnias." << endl;
+        } else {
+            cout << this->get_name() << " doesn't receive a scholarship." << endl;
+        }
     }
 
     ~Student() {
@@ -83,11 +95,21 @@ Student* the_best_student(Student* students[], int length) {
 int Student::number_of_students = 0;
 
 int main() {
-    Student* first = new Student("Tom", 4, 3.2);
+    Student* first = new Student("Tom", 4, 2.2);
+    first->output();
+
     Student* second = new Student("Sam", 2, 4.5);
-    Student* students[2] = {first, second};
+    second->output();
+
+    Student* third = new Student("John", 1, 3.3);
+    third->output();
+
+    Student* fourth = new Student("Smith", 3, 2.5);
+    fourth->output();
+
+    Student* students[4] = {first, second, third, fourth};
     int lenght = students[0]->number_of_students;
-    cout << "The best student is: " << endl;
+    cout << endl << "The best student is: " << endl;
     the_best_student(students, lenght)->output();
     cout << endl;
 
@@ -95,5 +117,12 @@ int main() {
     students[0]->output();
     cout << "The best student is: " << endl;
     the_best_student(students, lenght)->output();
+
+    cout << "\nScholarship:\n";
+    first->output_scholarship();
+    second->output_scholarship();
+    third->output_scholarship();
+    fourth->output_scholarship();
+
     return 0;
 }

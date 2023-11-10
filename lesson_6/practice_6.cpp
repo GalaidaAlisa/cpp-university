@@ -28,17 +28,17 @@ public:
         }
     }
 
-    float get_coord(int index) {
+    float get_coord(int index) const {
         if ((index >= 0) && (index < dim)) {
             return coord[index];
         } 
     }
 
-    int get_dim() {
+    int get_dim() const {
         return dim;
     }
 
-    float lenght() {
+    float lenght() const {
         int suma = 0;
         for (int i = 0; i < dim; i++) {
             suma += coord[i] * coord[i];
@@ -58,11 +58,11 @@ public:
     }
 
     Vector* dob(Vector* v, float k) {
-    Vector* v_mod = new Vector(v->get_dim());
-    for (int i = 0; i < v->get_dim(); i++) {
-        v_mod->set_coord(v->get_coord(i) * k, i);
-    }
-    return v_mod;
+        Vector* v_mod = new Vector(v->get_dim());
+        for (int i = 0; i < v->get_dim(); i++) {
+            v_mod->set_coord(v->get_coord(i) * k, i);
+        }
+        return v_mod;
     }
 
     ~Vector() {
@@ -75,7 +75,7 @@ private:
 };
 
 
-float len(Vector* vector) {
+float len(const Vector* vector) {
     int suma = 0;
     for (int i = 0; i < vector->get_dim(); i++) {
         suma += vector->get_coord(i) * vector->get_coord(i);
@@ -83,7 +83,7 @@ float len(Vector* vector) {
     return sqrt(suma);
 }
 
-Vector* suma(Vector* vector1, Vector* vector2) {
+Vector* suma(const Vector* vector1, const Vector* vector2) {
     if (vector1->get_dim() != vector2->get_dim()) {
         return nullptr;
     }
@@ -94,7 +94,7 @@ Vector* suma(Vector* vector1, Vector* vector2) {
     return v;
 }
 
-float scalar_product(Vector* vector1, Vector* vector2) {
+float scalar_product(const Vector* vector1, const Vector* vector2) {
     if (vector1->get_dim() != vector2->get_dim()) {
         return NULL;
     }
@@ -124,6 +124,7 @@ int main() {
     v1.set_coord(5, 1);
     v1.set_coord(-7, 2);
     v1.output();
+    cout << "Lenght by function: " << len(&v1) << endl;
     cout << endl;
 
     Vector* v2 = new Vector(4);
