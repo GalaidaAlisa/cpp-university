@@ -1,0 +1,2 @@
+Max|0|2020|dog
+Cutie|0|2018|rabbit
