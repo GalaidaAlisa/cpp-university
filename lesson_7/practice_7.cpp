@@ -45,7 +45,6 @@ public:
 private:
     float balance;
     static float interest_rent;
-    static int number_of_cards;
     static float total_balance;
 };
 
@@ -126,7 +125,6 @@ public:
 
 
 float BankBalance::interest_rent = 5.5;
-int BankBalance::number_of_cards = 3;
 float BankBalance::total_balance = 0;
 
 int main() {
