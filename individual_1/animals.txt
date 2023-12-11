@@ -1,2 +1,10 @@
-Max|0|2020|dog
-Cutie|0|2018|rabbit
+Max|1|0|2023|cat
+Cutie|0|0|2022|dog
+Flower|0|1|2021|rabbit
+Lucky|1|0|2022|dog
+Pushok|1|0|2023|cat
+Sunshine|1|0|2022|rabbit
+Cloud|1|0|2021|rabbit
+Sweety|0|1|2020|dog
+Snow|0|0|2021|cat
+Whiskers|0|1|2022|cat
